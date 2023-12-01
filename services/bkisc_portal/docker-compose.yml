@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  bkisc_portal:
+    image: bkisc_portal
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # ports:
+    #   - "3001:80"
+    restart: always
+    volumes:
+      - /flag1.txt:/flag1.txt
