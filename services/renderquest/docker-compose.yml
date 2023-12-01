@@ -1,18 +1,17 @@
 version: '3.4'
 
 services:
-  bkisc_portal:
-    image: bkisc_portal
+  renderquest:
+    image: renderquest
     build:
       context: .
       dockerfile: ./Dockerfile
     # ports:
-    #   - "3001:80"
-    restart: always
-    volumes:
-      - /flag1.txt:/flag1.txt
+    #   - 3002:1337
     networks:
       - training_ad
+    volumes:
+      - /flag2.txt:/flag2.txt
 networks:
   training_ad:
     external: true

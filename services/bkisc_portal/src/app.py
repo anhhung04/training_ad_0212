@@ -59,10 +59,11 @@ def login():
     username = request.form.get("username", "nobody")
     password = request.form.get("password", "nobody")
     token = request.form.get("token", "0")
-    if session["user"] is None:
+    if session.get('user', 'nobody') == 'nobody':
         try:
                 sql = "SELECT * FROM users WHERE (usrname='%s' AND passwd='%s') OR token=%s;" % (username, password, token)
                 result = query_db(sql, one=True)
+                print(result)
                 session['user'] = result['usrname']
         except:
             return Response(render_template_string("Invalid Credential"), mimetype='text/plain')    

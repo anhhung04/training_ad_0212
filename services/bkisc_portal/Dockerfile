@@ -13,7 +13,7 @@ RUN apk add --update --no-cache \
     py3-pip \
     && pip install -I --no-cache-dir -r /app/requirements.txt
 COPY src .
-RUN sed -i "s/super_secret_password/$(head -c 100 /dev/urandom | tr -dc 'a-zA-Z')/g" /app/schema.sql
+RUN sed -i "s/REDACTED/super_secret_password/g" /app/schema.sql
 COPY conf .
 RUN mv /app/app.conf /etc/nginx/conf.d/default.conf
 
